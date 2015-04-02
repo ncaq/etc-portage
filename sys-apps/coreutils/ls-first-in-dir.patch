@@ -1,0 +1,26 @@
+diff --git a/src/ls.c b/src/ls.c
+index 1952236..9b57fca 100644
+--- a/src/ls.c
++++ b/src/ls.c
+@@ -3227,7 +3227,20 @@ gobble_file (char const *name, enum filetype type, ino_t inode,
+ static bool
+ is_directory (const struct fileinfo *f)
+ {
+-  return f->filetype == directory || f->filetype == arg_directory;
++  if(f->filetype == directory || f->filetype == arg_directory)
++    {
++      return true;
++    }
++  else if(f->filetype == symbolic_link)
++    {
++      struct stat s;
++      stat(f->linkname, &s);
++      if(S_ISDIR(s.st_mode))
++        {
++          return true;
++        };
++    }
++  return false;
+ }
+ 
+ /* Put the name of the file that FILENAME is a symbolic link to
