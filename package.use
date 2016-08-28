@@ -24,3 +24,5 @@ dev-ml/lablgtk sourceview
 # required by gnome-base/gnome-control-center-3.20.1-r1::gentoo[cups]
 # required by net-libs/gnome-online-accounts-3.20.3::gentoo[gnome]
 >=net-fs/samba-4.2.14 client winbind
+# required by app-text/texlive-2015::gentoo[luatex]
+>=app-text/texlive-core-2015 xetex
