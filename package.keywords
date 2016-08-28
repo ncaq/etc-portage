@@ -5,7 +5,6 @@ x11-drivers/* -~amd64
 app-office/libreoffice -~amd64
 dev-dotnet/libgdiplus -~amd64
 dev-lang/ruby -~amd64
-media-libs/giflib -~amd64
 www-client/chromium -~amd64
 
 sys-apps/portage
