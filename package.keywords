@@ -21,3 +21,5 @@ sys-process/atop
 # required by sys-boot/grub-2.02_beta2-r9::gentoo
 =sys-libs/ncurses-5.9-r101 ~amd64
 =sys-libs/ncurses-6.0-r1 ~amd64
+# required by x11-misc/lightdm-gtk-greeter-2.0.1-r1::gentoo
+x11-misc/lightdm -~amd64
