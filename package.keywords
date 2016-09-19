@@ -5,7 +5,6 @@ x11-drivers/* -~amd64
 app-office/libreoffice -~amd64
 dev-dotnet/libgdiplus -~amd64
 dev-lang/ruby -~amd64
-media-libs/giflib -~amd64
 www-client/chromium -~amd64
 
 sys-apps/portage
@@ -16,10 +15,5 @@ sys-process/atop
 
 # required by gnome-base/gnome-control-center-3.20.1-r1::gentoo[-wayland]
 =x11-drivers/xf86-input-libinput-0.19.0 ~amd64
-# required by gnome-extra/nautilus-dropbox-1.6.2::gentoo
-# required by sys-apps/texinfo-6.1::gentoo
-# required by sys-boot/grub-2.02_beta2-r9::gentoo
-=sys-libs/ncurses-5.9-r101 ~amd64
-=sys-libs/ncurses-6.0-r1 ~amd64
 # required by x11-misc/lightdm-gtk-greeter-2.0.1-r1::gentoo
 x11-misc/lightdm -~amd64
