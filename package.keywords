@@ -3,7 +3,6 @@ x11-base/* -~amd64
 x11-drivers/* -~amd64
 
 app-office/libreoffice -~amd64
-dev-dotnet/libgdiplus -~amd64
 dev-lang/ruby -~amd64
 www-client/chromium -~amd64
 
