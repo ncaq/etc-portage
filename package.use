@@ -32,5 +32,3 @@ dev-ml/lablgtk sourceview
 >=sys-libs/tevent-0.9.28 python
 # required by dev-qt/qt-creator-4.0.3::gentoo
 >=dev-libs/libpcre-8.39 pcre16
-# required by net-im/slack-desktop-2.1.2::fkmclane
->=dev-libs/libdbusmenu-12.10.2-r2 gtk3
