@@ -34,3 +34,5 @@ dev-ml/lablgtk sourceview
 >=dev-libs/libpcre-8.39 pcre16
 # required by stack
 sys-libs/ncurses tinfo
+# required by www-client/chromium-54.0.2840.59::gentoo
+>=media-libs/libvpx-1.6.0-r1 svc
