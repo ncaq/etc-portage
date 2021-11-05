@@ -72,5 +72,3 @@ net-vpn/strongswan -caps -non-root
 dev-libs/libutf8proc -cjk
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
-# [Bug#994961: glib2.0: gnome-keyring unable to unlock login keyring on some systems since GLib 2.70.0-1](https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1820622.html)
-gnome-base/gnome-keyring -caps -filecaps
