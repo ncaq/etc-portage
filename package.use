@@ -17,6 +17,8 @@ net-vpn/networkmanager-l2tp gnome
 sys-kernel/gentoo-sources experimental
 www-client/firefox clang
 
+# [821505 – www-client/firefox: PGO: Error: Channel closing: too late to send/recv, messages will be lost](https://bugs.gentoo.org/821505)
+www-client/firefox -pgo
 # required by www-client/firefox-65.0::gentoo
 >=dev-db/sqlite-3.26.0 secure-delete
 >=x11-base/xorg-server-1.20.3 xvfb
