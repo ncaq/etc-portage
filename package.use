@@ -57,6 +57,7 @@ net-vpn/strongswan -caps -non-root
 >=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by kde-misc/kdeconnect-20.12.1::gentoo
 >=dev-qt/qtmultimedia-5.15.2 widgets qml
+>=kde-frameworks/sonnet-5.88.0 qml
 # required by dev-python/jupyter-1.0.0-r3::gentoo
 >=dev-python/QtPy-1.9.0-r5 printsupport
 >=net-libs/zeromq-4.3.4 drafts
