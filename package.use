@@ -72,3 +72,5 @@ net-vpn/strongswan -caps -non-root
 dev-libs/libutf8proc -cjk
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
+# required by net-im/discord-bin-0.0.16-r4::gentoo
+>=sys-libs/glibc-2.34-r3 -clone3
