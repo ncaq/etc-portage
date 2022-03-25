@@ -73,3 +73,5 @@ dev-libs/libutf8proc -cjk
 >=media-libs/freetype-2.10.4 harfbuzz
 # required by net-im/discord-bin-0.0.16-r4::gentoo
 >=sys-libs/glibc-2.34-r3 -clone3
+# required by sys-devel/mold-1.1.1::gentoo
+>=x11-drivers/nvidia-drivers-510.60.02 static-libs
