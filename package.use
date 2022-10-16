@@ -24,6 +24,8 @@ dev-lang/python sqlite
 # required by www-client/chromium-63.0.3239.108:0/0::gentoo
 >=net-libs/nodejs-8.14.0 inspector
 sys-libs/zlib minizip
+# required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
+>=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by media-gfx/gimp-2.9.8-r1::gentoo
 >=media-libs/libmypaint-1.3.0 gegl
 # required by app-office/libreoffice-5.4.2.2::gentoo
@@ -32,39 +34,20 @@ sys-libs/zlib minizip
 >=media-libs/libsdl2-2.0.8-r2 haptic
 >=app-arch/xz-utils-5.2.5 static-libs
 >=sys-boot/grub-2.02-r1 mount
-# required by sci-mathematics/coq-8.6.1::gentoo[gtk]
->=dev-ml/lablgtk-2.18.5 sourceview
-# required by net-vpn/networkmanager-l2tp-1.2.12::gentoo
->=net-dialup/ppp-2.4.7-r7 eap-tls
->=dev-libs/nss-3.44-r2 utils
-# required by media-libs/mozjpeg-9999::ncaq-overlay
->=media-libs/libpng-1.6.37 static-libs
->=sys-libs/zlib-1.2.11-r2 static-libs
-# required by dev-db/mysql-workbench-8.0.17::gentoo
->=net-libs/libssh-0.9.0 server
 # required by dev-texlive/texlive-xetex-2020::gentoo
 >=app-text/texlive-core-2020-r5 xetex
 # required by sys-libs/libseccomp:gentoo[python]
 sys-libs/libseccomp static-libs
-# required by [732708 – net-vpn/strongswan charon program complains about missing caps](https://bugs.gentoo.org/732708)
-net-vpn/strongswan -caps -non-root
-# required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
->=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by dev-python/jupyter-1.0.0-r4::gentoo
 >=dev-python/PyQt5-5.15.6 sql
 >=dev-python/QtPy-2.2.1 printsupport
 >=dev-qt/qtmultimedia-5.15.5-r1 widgets
 >=net-libs/zeromq-4.3.4-r1 drafts
 >=x11-libs/wxGTK-3.0.5.1 gstreamer
-# required by dev-ml/ocamlgraph-1.8.8-r2::gentoo[gtk]
->=dev-ml/lablgtk-2.18.10:2 gnomecanvas
-# required by dev-ml/ocamlgraph-2.0.0-r1::gentoo
->=dev-ml/stdlib-shims-0.3.0 ocamlopt
 # required by dev-lang/julia-1.6.0::gentoo
 >=net-misc/curl-7.77.0 ssh
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
-# required by sys-devel/mold-1.1.1::gentoo
->=x11-drivers/nvidia-drivers-510.60.02 static-libs
-# required by hadolint
-dev-libs/gmp static-libs
+# required by media-libs/mozjpeg-9999::ncaq-overlay
+>=media-libs/libpng-1.6.37 static-libs
+>=sys-libs/zlib-1.2.11-r2 static-libs
