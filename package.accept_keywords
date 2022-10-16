@@ -13,3 +13,6 @@ sys-kernel/* -~amd64
 virtual/libudev -~amd64
 virtual/udev -~amd64
 www-client/chromium -~amd64
+
+# required by dev-util/nvidia-cuda-toolkit
+sys-devel/gcc:11 -~amd64
