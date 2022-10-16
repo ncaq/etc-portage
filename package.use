@@ -50,9 +50,11 @@ sys-libs/libseccomp static-libs
 net-vpn/strongswan -caps -non-root
 # required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
 >=dev-cpp/abseil-cpp-20200923.2 cxx17
-# required by dev-python/jupyter-1.0.0-r3::gentoo
->=dev-python/QtPy-1.9.0-r5 printsupport
->=net-libs/zeromq-4.3.4 drafts
+# required by dev-python/jupyter-1.0.0-r4::gentoo
+>=dev-python/PyQt5-5.15.6 sql
+>=dev-python/QtPy-2.2.1 printsupport
+>=dev-qt/qtmultimedia-5.15.5-r1 widgets
+>=net-libs/zeromq-4.3.4-r1 drafts
 >=x11-libs/wxGTK-3.0.5.1 gstreamer
 # required by dev-ml/ocamlgraph-1.8.8-r2::gentoo[gtk]
 >=dev-ml/lablgtk-2.18.10:2 gnomecanvas
