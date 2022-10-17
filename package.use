@@ -12,7 +12,6 @@ kde-frameworks/kio -kwallet
 mail-client/thunderbird clang
 media-fonts/ricty disable-fullwidth-ambiguous-charactors
 net-print/hplip minimal -X
-net-vpn/networkmanager-l2tp gnome
 sys-kernel/gentoo-sources experimental
 www-client/firefox clang
 
