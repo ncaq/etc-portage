@@ -11,5 +11,8 @@ virtual/libudev -~amd64
 virtual/udev -~amd64
 www-client/chromium -~amd64
 
+# reequired by Zen 4
+=sys-kernel/gentoo-sources-6.0* ~amd64
+
 # required by dev-util/nvidia-cuda-toolkit
 sys-devel/gcc:11 -~amd64
