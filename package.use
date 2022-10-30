@@ -49,5 +49,3 @@ sys-libs/libseccomp static-libs
 # required by media-libs/mozjpeg-9999::ncaq-overlay
 >=media-libs/libpng-1.6.37 static-libs
 >=sys-libs/zlib-1.2.11-r2 static-libs
-# [845381 – dev-util/nvidia-cuda-sdk-11.5.1 fails to compile: std_function.h:435:145: error: parameter packs not expanded with ...:](https://bugs.gentoo.org/845381)
-dev-util/nvidia-cuda-sdk -examples
