@@ -22,6 +22,8 @@ dev-lang/python sqlite
 # required by www-client/chromium-63.0.3239.108:0/0::gentoo
 >=net-libs/nodejs-8.14.0 inspector
 sys-libs/zlib minizip
+# required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
+dev-lang/python tk
 # required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
 >=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by media-gfx/gimp-2.9.8-r1::gentoo
