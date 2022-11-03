@@ -9,7 +9,7 @@ dev-lang/perl ithreads
 dev-lang/spidermonkey clang
 mail-client/thunderbird clang
 media-fonts/ricty disable-fullwidth-ambiguous-charactors
-net-print/hplip -X
+net-print/hplip -X minimal
 sys-kernel/gentoo-sources experimental
 www-client/firefox clang
 
