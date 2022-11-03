@@ -1,51 +1,30 @@
 app-admin/keepassxc autotype network
-app-editors/emacs dynamic-loading gfile harfbuzz imagemagick json libxml2 sound toolkit-scroll-bars xwidgets
+app-editors/emacs dynamic-loading gfile harfbuzz imagemagick json libxml2 sound source toolkit-scroll-bars xwidgets
 app-i18n/mozc renderer ut
 app-text/evince djvu dvi postscript t1lib
 app-text/texlive luatex
 dev-java/openjdk-bin gentoo-vm
-dev-lang/dmd -* abi_x86_32 examples selfhost tools
+dev-lang/dmd -selfhost tools
 dev-lang/perl ithreads
 dev-lang/spidermonkey clang
-kde-apps/libkcddb musicbrainz
-kde-frameworks/kio -kwallet
 mail-client/thunderbird clang
 media-fonts/ricty disable-fullwidth-ambiguous-charactors
-net-print/hplip minimal -X
+net-print/hplip -X
 sys-kernel/gentoo-sources experimental
 www-client/firefox clang
 
-# required by www-client/firefox-65.0::gentoo
->=dev-db/sqlite-3.26.0 secure-delete
->=x11-base/xorg-server-1.20.3 xvfb
-dev-lang/python sqlite
-# required by www-client/chromium-63.0.3239.108:0/0::gentoo
->=net-libs/nodejs-8.14.0 inspector
-sys-libs/zlib minizip
 # required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
 dev-lang/python tk
 # required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
 >=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by media-gfx/gimp-2.9.8-r1::gentoo
 >=media-libs/libmypaint-1.3.0 gegl
-# required by app-office/libreoffice-5.4.2.2::gentoo
->=dev-libs/xmlsec-1.2.25 nss
-# required by wine
->=media-libs/libsdl2-2.0.8-r2 haptic
->=app-arch/xz-utils-5.2.5 static-libs
->=sys-boot/grub-2.02-r1 mount
-# required by dev-texlive/texlive-xetex-2020::gentoo
->=app-text/texlive-core-2020-r5 xetex
-# required by sys-libs/libseccomp:gentoo[python]
-sys-libs/libseccomp static-libs
 # required by dev-python/jupyter-1.0.0-r4::gentoo
 >=dev-python/PyQt5-5.15.6 sql
 >=dev-python/QtPy-2.2.1 printsupport
 >=dev-qt/qtmultimedia-5.15.5-r1 widgets
 >=net-libs/zeromq-4.3.4-r1 drafts
 >=x11-libs/wxGTK-3.0.5.1 gstreamer
-# required by dev-lang/julia-1.6.0::gentoo
->=net-misc/curl-7.77.0 ssh
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
 # required by media-libs/mozjpeg-9999::ncaq-overlay
