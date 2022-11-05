@@ -13,6 +13,8 @@ net-print/hplip -X minimal
 sys-kernel/gentoo-sources experimental
 www-client/firefox clang
 
+# required by sys-boot/os-prober-1.81::gentoo
+>=sys-boot/grub-2.06-r3 mount
 # required by www-client/firefox-106.0.4::gentoo[pgo,X]
 >=x11-base/xorg-server-21.1.4 xvfb
 # required by www-client/chromium-106.0.5249.119::gentoo
