@@ -12,5 +12,5 @@ virtual/libudev -~amd64
 virtual/udev -~amd64
 www-client/chromium -~amd64
 
-# reequired by Zen 4
+# required by Zen 4
 =sys-kernel/gentoo-sources-6.0* ~amd64
