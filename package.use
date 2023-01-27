@@ -18,6 +18,7 @@ www-client/firefox clang
 # required by www-client/firefox-106.0.4::gentoo[pgo,X]
 >=x11-base/xorg-server-21.1.4 xvfb
 # required by www-client/chromium-106.0.5249.119::gentoo
+www-client/chromium libcxx
 >=net-libs/nodejs-18.11.0 inspector
 sys-libs/zlib minizip
 # required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
