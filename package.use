@@ -42,3 +42,6 @@ dev-lang/python tk
 >=sys-libs/zlib-1.2.11-r2 static-libs
 # Gtk-Message: 13:17:44.525: Failed to load module "canberra-gtk-module"
 media-libs/libcanberra gtk2
+# required by sys-apps/bat-extras-2022.07.27::guru
+>=dev-lang/rust-bin-1.67.0 rustfmt
+>=virtual/rust-1.67.0 rustfmt
