@@ -3,7 +3,6 @@ app-editors/emacs dynamic-loading gfile harfbuzz imagemagick json libxml2 sound 
 app-i18n/mozc renderer ut
 app-text/evince djvu dvi postscript t1lib
 app-text/texlive luatex
-dev-java/openjdk-bin gentoo-vm
 dev-lang/dmd -dmd-2_091 selfhost tools
 dev-lang/perl ithreads
 dev-lang/spidermonkey clang
