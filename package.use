@@ -32,7 +32,6 @@ dev-lang/python tk
 >=dev-python/PyQt5-5.15.6 sql
 >=dev-python/QtPy-2.2.1 printsupport
 >=dev-qt/qtmultimedia-5.15.5-r1 widgets
->=net-libs/zeromq-4.3.4-r1 drafts
 >=x11-libs/wxGTK-3.0.5.1 gstreamer
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
