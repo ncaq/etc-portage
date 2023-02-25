@@ -3,7 +3,6 @@ app-editors/emacs dynamic-loading gfile harfbuzz imagemagick json libxml2 sound 
 app-i18n/mozc renderer ut
 app-text/evince djvu dvi postscript t1lib
 app-text/texlive luatex
-dev-java/openjdk-bin gentoo-vm
 dev-lang/dmd -dmd-2_091 selfhost tools
 dev-lang/perl ithreads
 dev-lang/spidermonkey clang
@@ -18,6 +17,7 @@ www-client/firefox clang
 # required by www-client/firefox-106.0.4::gentoo[pgo,X]
 >=x11-base/xorg-server-21.1.4 xvfb
 # required by www-client/chromium-106.0.5249.119::gentoo
+www-client/chromium -custom-cflags libcxx
 >=net-libs/nodejs-18.11.0 inspector
 sys-libs/zlib minizip
 # required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
@@ -32,7 +32,6 @@ dev-lang/python tk
 >=dev-python/PyQt5-5.15.6 sql
 >=dev-python/QtPy-2.2.1 printsupport
 >=dev-qt/qtmultimedia-5.15.5-r1 widgets
->=net-libs/zeromq-4.3.4-r1 drafts
 >=x11-libs/wxGTK-3.0.5.1 gstreamer
 # required by kde-apps/kcachegrind-21.04.2::gentoo
 >=media-libs/freetype-2.10.4 harfbuzz
@@ -43,3 +42,7 @@ dev-lang/python tk
 media-libs/libcanberra gtk2
 # required by lvm2[-thin]
 app-containers/docker -device-mapper
+# required by sys-apps/bat-extras-2022.07.27::guru
+>=dev-lang/rust-1.67.0 rustfmt
+>=dev-lang/rust-bin-1.67.0 rustfmt
+>=virtual/rust-1.67.0 rustfmt
