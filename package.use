@@ -16,8 +16,6 @@ sys-kernel/gentoo-sources experimental
 sys-libs/zlib minizip
 # required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
 dev-lang/python tk
-# required by app-i18n/mozc-2.26.4220_p20201212102434_p20201219202429::ncaq-overlay
->=dev-cpp/abseil-cpp-20200923.2 cxx17
 # required by media-gfx/gimp-2.9.8-r1::gentoo
 >=media-libs/libmypaint-1.3.0 gegl
 # required by app-text/texlive-2021::gentoo[xml,-extra]
