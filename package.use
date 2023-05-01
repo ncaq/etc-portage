@@ -5,12 +5,9 @@ app-text/evince djvu dvi postscript t1lib
 app-text/texlive luatex
 dev-lang/dmd -dmd-2_091 selfhost tools
 dev-lang/perl ithreads
-dev-lang/spidermonkey clang
-mail-client/thunderbird clang
 media-fonts/ricty disable-fullwidth-ambiguous-charactors
 net-print/hplip -X minimal
 sys-kernel/gentoo-sources experimental
-www-client/firefox clang
 
 # required by sys-boot/os-prober-1.81::gentoo
 >=sys-boot/grub-2.06-r3 mount
