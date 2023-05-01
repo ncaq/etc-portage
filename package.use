@@ -12,7 +12,6 @@ sys-kernel/gentoo-sources experimental
 # required by sys-boot/os-prober-1.81::gentoo
 >=sys-boot/grub-2.06-r3 mount
 # required by www-client/chromium-106.0.5249.119::gentoo
-www-client/chromium -custom-cflags libcxx
 >=net-libs/nodejs-18.11.0 inspector
 sys-libs/zlib minizip
 # required by dev-python/xkeysnail-0.4.0-r4::ncaq-overlay
