@@ -11,6 +11,8 @@ sys-kernel/gentoo-sources experimental
 
 # required by sys-boot/os-prober-1.81::gentoo
 >=sys-boot/grub-2.06-r3 mount
+# required by mail-client/thunderbird-102.10.1::gentoo[system-librnp]
+>=dev-libs/sexp-0.8.3 static-libs
 # required by www-client/chromium-106.0.5249.119::gentoo
 >=net-libs/nodejs-18.11.0 inspector
 sys-libs/zlib minizip
