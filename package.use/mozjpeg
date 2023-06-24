@@ -1,0 +1,3 @@
+# required by media-libs/mozjpeg-9999::ncaq-overlay
+>=media-libs/libpng-1.6.37 static-libs
+>=sys-libs/zlib-1.2.11-r2 static-libs

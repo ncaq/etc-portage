@@ -1,0 +1,5 @@
+# required by dev-python/jupyter-1.0.0-r4::gentoo
+>=dev-python/PyQt5-5.15.6 sql
+>=dev-python/QtPy-2.2.1 printsupport
+>=dev-qt/qtmultimedia-5.15.5-r1 widgets
+>=x11-libs/wxGTK-3.0.5.1 gstreamer
