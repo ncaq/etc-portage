@@ -1,0 +1,4 @@
+*/* GRUB_PLATFORMS: -* efi-64
+
+# required by sys-boot/os-prober-1.81::gentoo
+>=sys-boot/grub-2.06-r3 mount

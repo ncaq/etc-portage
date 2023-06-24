@@ -1,0 +1,2 @@
+# required by kde-apps/kcachegrind-21.04.2::gentoo
+>=media-libs/freetype-2.10.4 harfbuzz

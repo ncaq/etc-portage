@@ -1,0 +1,3 @@
+# required by www-client/chromium-106.0.5249.119::gentoo
+>=net-libs/nodejs-18.11.0 inspector
+sys-libs/zlib minizip
