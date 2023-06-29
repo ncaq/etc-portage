@@ -1,0 +1,2 @@
+dev-lang/dmd -~amd64
+dev-util/dlang-tools -~amd64
