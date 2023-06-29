@@ -1,2 +1,0 @@
-# required by mail-client/thunderbird-102.10.1::gentoo[system-librnp]
->=dev-libs/sexp-0.8.3 static-libs
