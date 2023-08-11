@@ -1,4 +1,2 @@
 sys-boot/* -~amd64
 sys-kernel/* -~amd64
-virtual/libudev -~amd64
-virtual/udev -~amd64
