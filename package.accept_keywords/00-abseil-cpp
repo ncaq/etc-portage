@@ -1,0 +1,4 @@
+# 以下の問題が解決するまで安定版を使うことにします。
+# [912819 – [Tracker] Breakage with dev-libs/protobuf-23.3, dev-cpp/abseil-cpp-20230802](https://bugs.gentoo.org/912819)
+# [913243 – app-i18n/mozc-2.28.5029.102 - ../.../surrounding_text_util.cc: error: no match for operator= (operand types are std::string {aka s](https://bugs.gentoo.org/913243)
+dev-cpp/abseil-cpp -~amd64
