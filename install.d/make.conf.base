@@ -9,6 +9,11 @@ PLOCALES='${L10N}'
 EMERGE_DEFAULT_OPTS='--keep-going --tree --verbose'
 GENTOO_MIRRORS='https://ftp.iij.ad.jp/pub/linux/gentoo/'
 
+# features
+
+FEATURES='ccache'
+CCACHE_DIR='/var/cache/ccache'
+
 # build
 
 COMMON_FLAGS='-pipe -O2 -fomit-frame-pointer -march=native'
@@ -17,8 +22,3 @@ CXXFLAGS='${COMMON_FLAGS}'
 FCFLAGS='${COMMON_FLAGS}'
 FFLAGS='${COMMON_FLAGS}'
 RUSTFLAGS='-C target-cpu=native'
-
-# features
-
-FEATURES='ccache'
-CCACHE_DIR='/var/cache/ccache'
