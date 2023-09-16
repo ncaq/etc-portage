@@ -1,0 +1,2 @@
+# [914298 – media-video/vlc-3.0.18-r3:0/5-9: build failed when enable vdpau](https://bugs.gentoo.org/914298)
+media-video/vlc -vdpau
