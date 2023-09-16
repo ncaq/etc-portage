@@ -1,2 +1,5 @@
-repo.postsync.d/
+package.use/device-*
+
 savedconfig/
+
+make.conf
