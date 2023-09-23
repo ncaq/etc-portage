@@ -3,21 +3,22 @@ set -eux
 
 # portage設定ファイルをデバイスの環境に合わせて生成する。
 
-portage_dir=$(dirname "$0")
+# スクリプトのディレクトリ位置を保持する。
+script_dir=$(dirname "$0")
 
 # `MAKEOPTS`でジョブ数をCPUコア数にするのは動的な処理が必要。
 install-make-conf() {
-  cp "$portage_dir"/install.d/make.conf.base "$portage_dir"/make.conf
+  cp "$script_dir"/install.d/make.conf.base "$script_dir"/make.conf
 
   echo "
 ## makeopts
 
-MAKEOPTS='-j$(nproc)'" >> "$portage_dir"/make.conf
+MAKEOPTS='-j$(nproc)'" >> "$script_dir"/make.conf
 }
 
 # AVXなどの使えるCPUの使える機能を読み出すにはコマンド呼び出しが必要。
 install-cpu-flags() {
-  echo "*/* $(cpuid2cpuflags)" > "$portage_dir"/package.use/install-cpu-flags
+  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/install-cpu-flags
 }
 
 # デバイスによって搭載されているビデオカードが異なる。
@@ -38,14 +39,14 @@ install-video() {
   esac
   case $video_card in
     nvidia)
-      echo '*/* VIDEO_CARDS: -* nvidia' > "$portage_dir"/package.use/install-video-cards
-      echo '*/* vdpau nvdec nvenc' > "$portage_dir"/package.use/install-video-acceleration
+      echo '*/* VIDEO_CARDS: -* nvidia' > "$script_dir"/package.use/install-video-cards
+      echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/install-video-acceleration
       ;;
     amd)
-      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi' > "$portage_dir"/package.use/install-video-cards
+      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi' > "$script_dir"/package.use/install-video-cards
       # amfは現状プロプライエタリなドライバが必要らしいのと、
       # 現状AMD GPUで動画をエンコードする需要が個人的に無いので有効化していない。
-      echo '*/* vaapi vdpau' > "$portage_dir"/package.use/install-video-acceleration
+      echo '*/* vaapi vdpau' > "$script_dir"/package.use/install-video-acceleration
       ;;
     *)
       echo "Unknown video card: $video_card" >&2
