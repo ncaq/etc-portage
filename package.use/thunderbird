@@ -1,0 +1,2 @@
+# required by mail-client/thunderbird-115.3.0::gentoo[system-libvpx]
+>=media-libs/libvpx-1.13.0-r1 postproc
