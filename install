@@ -60,7 +60,7 @@ use-dwim-client() {
     real_path=$(realpath "$i")
     cd "$script_dir"/package.use/
     rel_path=$(realpath --relative-to=. "$real_path")
-    ln -sfv "$rel_path" .
+    ln -sf "$rel_path" .
     cd "$script_dir"
   done
 }
