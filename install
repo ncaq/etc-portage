@@ -6,6 +6,22 @@ set -eux
 # スクリプトのディレクトリ位置を保持する。
 script_dir=$(dirname "$0")
 
+# マシンの種類によってプロファイルを選択します。
+eselect-profile() {
+  case $(hostnamectl chassis) in
+    desktop | laptop)
+      eselect profile set default/linux/amd64/17.1/desktop/systemd/merged-usr
+      ;;
+    server)
+      eselect profile set default/linux/amd64/17.1/systemd/merged-usr
+      ;;
+    *)
+      echo "Unknown chassis: $(hostnamectl chassis)" >&2
+      exit 1
+      ;;
+  esac
+}
+
 # `MAKEOPTS`でジョブ数をCPUコア数にするのは動的な処理が必要。
 install-make-conf() {
   cp "$script_dir"/install.d/make.conf.base "$script_dir"/make.conf
@@ -55,6 +71,7 @@ install-video() {
   esac
 }
 
+eselect-profile
 install-make-conf
 install-cpu-flags
 install-video
