@@ -7,7 +7,7 @@ set -eu
 script_dir_relative=$(dirname "$0")
 script_dir=$(realpath "$script_dir_relative")
 
-# マシンがclient(つまりserverではない)かどうかを判定して保持します。
+# マシンがclient(つまりserverではない)かどうかを判定して保持する。
 case $(hostnamectl chassis) in
   desktop | laptop)
     is_client=true
@@ -21,7 +21,7 @@ case $(hostnamectl chassis) in
     ;;
 esac
 
-# マシンの種類によってプロファイルを選択します。
+# マシンの種類によってプロファイルを選択する。
 eselect-profile() {
   if $is_client; then
     eselect profile set default/linux/amd64/17.1/desktop/systemd/merged-usr
@@ -45,7 +45,7 @@ cpu-flags() {
   echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
 }
 
-# クライアントとサーバに両対応したpackage.useを構築します。
+# クライアントとサーバに両対応したpackage.useを構築する。
 use-dwim-client() {
   if $is_client; then
     use_flag_files=("$script_dir"/install.d/package.use/{base,client}/*)
