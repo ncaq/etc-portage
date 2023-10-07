@@ -6,6 +6,7 @@ set -eu
 # スクリプトのディレクトリ位置を保持する。
 script_dir_relative=$(dirname "$0")
 script_dir=$(realpath "$script_dir_relative")
+cd "$script_dir"
 
 # マシンがclient(つまりserverではない)かどうかを判定して保持する。
 case $(hostnamectl chassis) in
@@ -20,6 +21,9 @@ case $(hostnamectl chassis) in
     exit 1
     ;;
 esac
+
+# git clceanするとpackage.useディレクトリが消えてしまうので毎回生成します。
+mkdir -p package.use
 
 # マシンの種類によってプロファイルを選択する。
 eselect-profile() {
