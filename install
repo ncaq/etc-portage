@@ -6,24 +6,31 @@ set -eu
 # スクリプトのディレクトリ位置を保持する。
 script_dir=$(dirname "$0")
 
+# マシンがclient(つまりserverではない)かどうかを判定して保持します。
+case $(hostnamectl chassis) in
+  desktop | laptop)
+    is_client=true
+    ;;
+  server)
+    is_client=false
+    ;;
+  *)
+    echo "Unknown chassis: $(hostnamectl chassis)" >&2
+    exit 1
+    ;;
+esac
+
 # マシンの種類によってプロファイルを選択します。
 eselect-profile() {
-  case $(hostnamectl chassis) in
-    desktop | laptop)
-      eselect profile set default/linux/amd64/17.1/desktop/systemd/merged-usr
-      ;;
-    server)
-      eselect profile set default/linux/amd64/17.1/systemd/merged-usr
-      ;;
-    *)
-      echo "Unknown chassis: $(hostnamectl chassis)" >&2
-      exit 1
-      ;;
-  esac
+  if $is_client; then
+    eselect profile set default/linux/amd64/17.1/desktop/systemd/merged-usr
+  else
+    eselect profile set default/linux/amd64/17.1/systemd/merged-usr
+  fi
 }
 
 # `MAKEOPTS`でジョブ数をCPUコア数にするのは動的な処理が必要。
-install-make-conf() {
+make-conf() {
   cp "$script_dir"/install.d/make.conf.base "$script_dir"/make.conf
 
   echo "
@@ -33,12 +40,21 @@ MAKEOPTS='-j$(nproc)'" >> "$script_dir"/make.conf
 }
 
 # AVXなどの使えるCPUの使える機能を読み出すにはコマンド呼び出しが必要。
-install-cpu-flags() {
-  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/install-cpu-flags
+cpu-flags() {
+  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
+}
+
+# クライアントとサーバに両対応したpackage.useを構築します。
+use-dwim-client() {
+  if $is_client; then
+    cp "$script_dir"/install.d/package.use/{base,client}/* "$script_dir"/package.use/
+  else
+    cp "$script_dir"/install.d/package.use/base/* "$script_dir"/package.use/
+  fi
 }
 
 # デバイスによって搭載されているビデオカードが異なる。
-install-video() {
+video() {
   case $(hostname) in
     bullet)
       # AMD GPU + NVIDIA GPU構成ですが、AMDのCPU内蔵GPUは使わない。
@@ -55,14 +71,14 @@ install-video() {
   esac
   case $video_card in
     nvidia)
-      echo '*/* VIDEO_CARDS: -* nvidia' > "$script_dir"/package.use/install-video-cards
-      echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/install-video-acceleration
+      echo '*/* VIDEO_CARDS: -* nvidia' > "$script_dir"/package.use/video-cards
+      echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/video-acceleration
       ;;
     amd)
-      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi' > "$script_dir"/package.use/install-video-cards
+      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi' > "$script_dir"/package.use/video-cards
       # amfは現状プロプライエタリなドライバが必要らしいのと、
       # 現状AMD GPUで動画をエンコードする需要が個人的に無いので有効化していない。
-      echo '*/* vaapi vdpau' > "$script_dir"/package.use/install-video-acceleration
+      echo '*/* vaapi vdpau' > "$script_dir"/package.use/video-acceleration
       ;;
     *)
       echo "Unknown video card: $video_card" >&2
@@ -72,6 +88,7 @@ install-video() {
 }
 
 eselect-profile
-install-make-conf
-install-cpu-flags
-install-video
+make-conf
+cpu-flags
+use-dwim-client
+video

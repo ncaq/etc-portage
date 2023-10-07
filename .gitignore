@@ -1,4 +1,4 @@
-package.use/install-*
+package.use/*
 
 make.profile
 savedconfig/
