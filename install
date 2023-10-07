@@ -87,7 +87,7 @@ video() {
       echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/video-acceleration
       ;;
     amd)
-      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi' > "$script_dir"/package.use/video-cards
+      echo '*/* VIDEO_CARDS: -* amdgpu radeonsi radeon' > "$script_dir"/package.use/video-cards
       # amfは現状プロプライエタリなドライバが必要らしいのと、
       # 現状AMD GPUで動画をエンコードする需要が個人的に無いので有効化していない。
       echo '*/* vaapi vdpau' > "$script_dir"/package.use/video-acceleration
