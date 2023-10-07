@@ -4,7 +4,8 @@ set -eu
 # portage設定ファイルをデバイスの環境に合わせて生成する。
 
 # スクリプトのディレクトリ位置を保持する。
-script_dir=$(dirname "$0")
+script_dir_relative=$(dirname "$0")
+script_dir=$(realpath "$script_dir_relative")
 
 # マシンがclient(つまりserverではない)かどうかを判定して保持します。
 case $(hostnamectl chassis) in
@@ -47,10 +48,17 @@ cpu-flags() {
 # クライアントとサーバに両対応したpackage.useを構築します。
 use-dwim-client() {
   if $is_client; then
-    cp "$script_dir"/install.d/package.use/{base,client}/* "$script_dir"/package.use/
+    use_flag_files=("$script_dir"/install.d/package.use/{base,client}/*)
   else
-    cp "$script_dir"/install.d/package.use/base/* "$script_dir"/package.use/
+    use_flag_files=("$script_dir"/install.d/package.use/base/*)
   fi
+  for i in "${use_flag_files[@]}"; do
+    real_path=$(realpath "$i")
+    cd "$script_dir"/package.use/
+    rel_path=$(realpath --relative-to=. "$real_path")
+    ln -sfv "$rel_path" .
+    cd "$script_dir"
+  done
 }
 
 # デバイスによって搭載されているビデオカードが異なる。
