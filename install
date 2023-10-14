@@ -1,9 +1,9 @@
 #!/bin/bash
 set -eu
 
-# portage設定ファイルをデバイスの環境に合わせて生成する。
+# portage向けの設定をデバイスの固有の環境に合わせて生成する。
 
-# スクリプトのディレクトリ位置を保持する。
+# このinstallスクリプトのディレクトリ位置を保持する。
 script_dir_relative=$(dirname "$0")
 script_dir=$(realpath "$script_dir_relative")
 cd "$script_dir"
@@ -22,7 +22,11 @@ case $(hostnamectl chassis) in
     ;;
 esac
 
-# git clceanするとpackage.useディレクトリが消えてしまうので毎回生成します。
+# `git clean -d --interactive -x`するとgitignoreされていて内部にファイルが無い`package.use/`ディレクトリは消える。
+# そうするとファイルをナイーブに書き込めなくなってしまうので毎回作成する。
+# 一時的なインストール時の回避などで最初に書き込む関数がどれか変わるかもしれないため、
+# あまり行儀が良くないですがそういった関数が定義される前に作成してしまう。
+# gitignoreされる空のディレクトリを作成するだけならほぼ害は無いはず。
 mkdir -p package.use
 
 # マシンの種類によってプロファイルを選択する。
@@ -44,7 +48,8 @@ make-conf() {
 MAKEOPTS='-j$(nproc)'" >> "$script_dir"/make.conf
 }
 
-# AVXなどの使えるCPUの使える機能を読み出すにはコマンド呼び出しが必要。
+# AVXなどはCPUによってサポートしているかが異なるため、
+# コマンドによって読み出して設定する。
 cpu-flags() {
   echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
 }
@@ -87,6 +92,9 @@ video() {
       echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/video-acceleration
       ;;
     amd)
+      # 最近のGPUなら本来はradeonsiだけで良いのだが、
+      # 一部のパッケージがradeonsiを動かすためにradeonを要求するので、
+      # 別に害も無いはずなのでまとめて有効化している。
       echo '*/* VIDEO_CARDS: -* amdgpu radeonsi radeon' > "$script_dir"/package.use/video-cards
       # amfは現状プロプライエタリなドライバが必要らしいのと、
       # 現状AMD GPUで動画をエンコードする需要が個人的に無いので有効化していない。

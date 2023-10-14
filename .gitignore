@@ -1,6 +1,5 @@
-package.use/*
-
 make.profile
+package.use/
 savedconfig/
 
 make.conf
