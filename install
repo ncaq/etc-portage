@@ -8,26 +8,24 @@ script_dir_relative=$(dirname "$0")
 script_dir=$(realpath "$script_dir_relative")
 cd "$script_dir"
 
-# マシンがclient(つまりserverではない)かどうかを判定して保持する。
-case $(hostnamectl chassis) in
-  desktop | laptop)
-    is_client=true
-    ;;
-  server)
-    is_client=false
-    ;;
-  *)
-    echo "Unknown chassis: $(hostnamectl chassis)" >&2
-    exit 1
-    ;;
-esac
-
 # `git clean -d --interactive -x`するとgitignoreされていて内部にファイルが無い`package.use/`ディレクトリは消える。
-# そうするとファイルをナイーブに書き込めなくなってしまうので毎回作成する。
-# 一時的なインストール時の回避などで最初に書き込む関数がどれか変わるかもしれないため、
-# あまり行儀が良くないですがそういった関数が定義される前に作成してしまう。
+# そうするとファイルをそのディレクトリに書き込めなくなってしまうので毎回ディレクトリを作成する。
 # gitignoreされる空のディレクトリを作成するだけならほぼ害は無いはず。
-mkdir -p package.use
+prepare-package-use-dir() {
+  mkdir -p "$script_dir"/package.use
+}
+
+# マシンがclient(つまりserverではない)かどうかを判定して`is_client`変数に保持する。
+determine-host-type() {
+  case $(hostnamectl chassis) in
+    desktop | laptop) is_client=true  ;;
+    server)           is_client=false ;;
+    *)
+      echo "Unknown chassis: $(hostnamectl chassis)" >&2
+      exit 1
+      ;;
+  esac
+}
 
 # マシンの種類によってプロファイルを選択する。
 eselect-profile() {
@@ -48,14 +46,8 @@ make-conf() {
 MAKEOPTS='-j$(nproc)'" >> "$script_dir"/make.conf
 }
 
-# AVXなどはCPUによってサポートしているかが異なるため、
-# コマンドによって読み出して設定する。
-cpu-flags() {
-  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
-}
-
 # クライアントとサーバに両対応したpackage.useを構築する。
-use-dwim-client() {
+link-use() {
   if $is_client; then
     use_flag_files=("$script_dir"/install.d/package.use/{base,client}/*)
   else
@@ -68,6 +60,12 @@ use-dwim-client() {
     ln -sf "$rel_path" .
     cd "$script_dir"
   done
+}
+
+# AVXなどはCPUによってサポートしているかが異なるため、
+# コマンドによって読み出して設定する。
+cpu-flags() {
+  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
 }
 
 # デバイスによって搭載されているビデオカードが異なる。
@@ -107,8 +105,10 @@ video() {
   esac
 }
 
+prepare-package-use-dir
+determine-host-type
 eselect-profile
 make-conf
+link-use
 cpu-flags
-use-dwim-client
 video
