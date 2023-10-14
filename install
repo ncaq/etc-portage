@@ -1,29 +1,31 @@
 #!/bin/bash
 set -eu
 
-# portage設定ファイルをデバイスの環境に合わせて生成する。
+# portage向けの設定をデバイスの固有の環境に合わせて生成する。
 
-# スクリプトのディレクトリ位置を保持する。
+# このinstallスクリプトのディレクトリ位置を保持する。
 script_dir_relative=$(dirname "$0")
 script_dir=$(realpath "$script_dir_relative")
 cd "$script_dir"
 
-# マシンがclient(つまりserverではない)かどうかを判定して保持する。
-case $(hostnamectl chassis) in
-  desktop | laptop)
-    is_client=true
-    ;;
-  server)
-    is_client=false
-    ;;
-  *)
-    echo "Unknown chassis: $(hostnamectl chassis)" >&2
-    exit 1
-    ;;
-esac
+# `git clean -d --interactive -x`するとgitignoreされていて内部にファイルが無い`package.use/`ディレクトリは消える。
+# そうするとファイルをそのディレクトリに書き込めなくなってしまうので毎回ディレクトリを作成する。
+# gitignoreされる空のディレクトリを作成するだけならほぼ害は無いはず。
+prepare-package-use-dir() {
+  mkdir -p "$script_dir"/package.use
+}
 
-# git clceanするとpackage.useディレクトリが消えてしまうので毎回生成します。
-mkdir -p package.use
+# マシンがclient(つまりserverではない)かどうかを判定して`is_client`変数に保持する。
+determine-host-type() {
+  case $(hostnamectl chassis) in
+    desktop | laptop) is_client=true  ;;
+    server)           is_client=false ;;
+    *)
+      echo "Unknown chassis: $(hostnamectl chassis)" >&2
+      exit 1
+      ;;
+  esac
+}
 
 # マシンの種類によってプロファイルを選択する。
 eselect-profile() {
@@ -44,13 +46,8 @@ make-conf() {
 MAKEOPTS='-j$(nproc)'" >> "$script_dir"/make.conf
 }
 
-# AVXなどの使えるCPUの使える機能を読み出すにはコマンド呼び出しが必要。
-cpu-flags() {
-  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
-}
-
 # クライアントとサーバに両対応したpackage.useを構築する。
-use-dwim-client() {
+link-use() {
   if $is_client; then
     use_flag_files=("$script_dir"/install.d/package.use/{base,client}/*)
   else
@@ -63,6 +60,12 @@ use-dwim-client() {
     ln -sf "$rel_path" .
     cd "$script_dir"
   done
+}
+
+# AVXなどはCPUによってサポートしているかが異なるため、
+# コマンドによって読み出して設定する。
+cpu-flags() {
+  echo "*/* $(cpuid2cpuflags)" > "$script_dir"/package.use/cpu-flags
 }
 
 # デバイスによって搭載されているビデオカードが異なる。
@@ -87,6 +90,9 @@ video() {
       echo '*/* vdpau nvdec nvenc' > "$script_dir"/package.use/video-acceleration
       ;;
     amd)
+      # 最近のGPUなら本来はradeonsiだけで良いのだが、
+      # 一部のパッケージがradeonsiを動かすためにradeonを要求するので、
+      # 別に害も無いはずなのでまとめて有効化している。
       echo '*/* VIDEO_CARDS: -* amdgpu radeonsi radeon' > "$script_dir"/package.use/video-cards
       # amfは現状プロプライエタリなドライバが必要らしいのと、
       # 現状AMD GPUで動画をエンコードする需要が個人的に無いので有効化していない。
@@ -99,8 +105,10 @@ video() {
   esac
 }
 
+prepare-package-use-dir
+determine-host-type
 eselect-profile
 make-conf
+link-use
 cpu-flags
-use-dwim-client
 video
