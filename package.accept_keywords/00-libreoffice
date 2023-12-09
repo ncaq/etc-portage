@@ -1,1 +1,4 @@
 app-office/libreoffice* -~amd64
+
+dev-cpp/libcmis -~amd64
+dev-libs/icu -~amd64
