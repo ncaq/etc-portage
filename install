@@ -30,9 +30,9 @@ determine-host-type() {
 # マシンの種類によってプロファイルを選択する。
 eselect-profile() {
   if $is_client; then
-    eselect profile set default/linux/amd64/17.1/desktop/systemd/merged-usr
+    eselect profile set default/linux/amd64/23.0/desktop/systemd
   else
-    eselect profile set default/linux/amd64/17.1/systemd/merged-usr
+    eselect profile set default/linux/amd64/23.0/systemd
   fi
 }
 
