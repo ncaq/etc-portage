@@ -1,3 +1,4 @@
-*/* dmd-2_104
+*/* DLANG_SINGLE_TARGET: ldc2-1_36
 
-dev-lang/dmd -dmd-2_104 selfhost tools
+dev-lang/dmd selfhost DLANG_SINGLE_TARGET: -ldc2-1_36
+dev-lang/ldc2 dmd-2_106 DLANG_SINGLE_TARGET: -ldc2-1_36 dmd-2_106
