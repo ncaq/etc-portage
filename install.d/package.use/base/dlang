@@ -1,4 +1,4 @@
-*/* DLANG_SINGLE_TARGET: ldc2-1_36
+*/* DLANG_SINGLE_TARGET: ldc2-1_35
 
-dev-lang/dmd selfhost DLANG_SINGLE_TARGET: -ldc2-1_36
-dev-lang/ldc2 dmd-2_106 DLANG_SINGLE_TARGET: -ldc2-1_36 dmd-2_106
+dev-lang/dmd selfhost DLANG_SINGLE_TARGET: -ldc2-1_35
+dev-lang/ldc2 dmd-2_106 DLANG_SINGLE_TARGET: -ldc2-1_35 dmd-2_106
