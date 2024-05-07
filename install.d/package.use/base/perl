@@ -1,1 +1,1 @@
-dev-lang/perl ithreads
+*/* PERL_FEATURES: ithreads
