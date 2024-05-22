@@ -1,5 +1,4 @@
-make.profile
-package.use/
-savedconfig/
-
-make.conf
+/make.conf
+/make.profile
+/package.use/
+/savedconfig/
