@@ -1,4 +1,0 @@
-# required by sys-apps/bat-extras-2022.07.27::guru
->=dev-lang/rust-1.67.0 rustfmt
->=dev-lang/rust-bin-1.67.0 rustfmt
->=virtual/rust-1.67.0 rustfmt
