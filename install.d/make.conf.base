@@ -1,6 +1,6 @@
 # locale
 
-L10N='ja en'
+L10N='ja en en-US'
 LINGUAS='${L10N}'
 PLOCALES='${L10N}'
 
