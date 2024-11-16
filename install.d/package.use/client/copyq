@@ -1,1 +1,4 @@
-x11-misc/copyq -qt6
+# required by x11-misc/copyq-9.1.0::gentoo
+>=dev-qt/qtbase-6.7.3-r2 wayland
+>=media-libs/mesa-24.2.7 wayland
+>=x11-libs/gtk+-3.24.42-r1 wayland
