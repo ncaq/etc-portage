@@ -1,4 +1,4 @@
-www-client/chromium -screencast -wayland
+www-client/chromium -screencast
 
 # required by www-client/chromium-106.0.5249.119::gentoo
 >=dev-lang/rust-1.75.0 profiler
