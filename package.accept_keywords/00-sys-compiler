@@ -1,6 +1,3 @@
-sys-devel/clang* -~amd64
+llvm-core/* -~amd64
+llvm-runtimes/* -~amd64
 sys-devel/gcc -~amd64
-sys-devel/lld* -~amd64
-sys-devel/llvm* -~amd64
-sys-libs/compiler-rt* -~amd64
-sys-libs/libomp -~amd64
