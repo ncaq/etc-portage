@@ -1,3 +1,2 @@
->=dev-lang/rust-1.67.0 profiler rustfmt
->=dev-lang/rust-bin-1.67.0 profiler rustfmt
->=virtual/rust-1.67.0 profiler rustfmt
+>=dev-lang/rust-1.67.0 rustfmt
+>=dev-lang/rust-bin-1.67.0 rustfmt
