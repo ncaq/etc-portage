@@ -5,3 +5,6 @@ www-client/chromium -screencast
 >=net-libs/nodejs-18.11.0 inspector
 >=virtual/rust-1.77.1 profiler
 sys-libs/zlib minizip
+
+# required by www-client/chromium-133.0.6943.53::gentoo[vaapi]
+>=media-libs/libva-2.22.0 wayland
