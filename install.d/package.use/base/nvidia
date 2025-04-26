@@ -1,0 +1,2 @@
+# required by Blackwell GPU
+x11-drivers/nvidia-drivers kernel-open
